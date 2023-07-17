@@ -10,6 +10,16 @@ app.use(express.json());
 */
 app.get('/api/get-env', (req, res) => {
    //Write your code here
+   const secretNumber = process.env.NUMBER;
+    if(secretNumber){
+        res.status(200).json({
+            number: secretNumber,
+        });
+    }else {
+        res.status(404).json({
+            err: "Not Found",
+        });
+    }
 });
 
 module.exports = app;
